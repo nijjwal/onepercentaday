@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nijjwal.onepercentprojectmiddleware.models.Customer;
@@ -22,4 +23,18 @@ public class CustomerController {
 		return customers;
 	}
 
+	@RequestMapping(value = "/customer", method = RequestMethod.GET)
+	public Customer getOneCustomerInfo(@RequestParam("uid") int userId, @RequestParam("lName") String lastName) {
+
+		List<Customer> customers = getAllCustomers();
+
+		for (int i = 0; i < customers.size(); i++) {
+			Customer customer = customers.get(i);
+			if (userId == customer.getId() && lastName.equalsIgnoreCase(customer.getLastName())) {
+				return customer;
+			}
+		}
+
+		return null;
+	}
 }
