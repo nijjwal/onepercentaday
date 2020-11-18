@@ -2,7 +2,7 @@ import React from 'react';
 import CustomerCard from '../components/CustomerCard';
 
 
-class CustomerService extends React.Component {
+class GetAllCustomerService extends React.Component {
 
     //1. Constructor
     constructor(props) {
@@ -62,4 +62,4 @@ class CustomerService extends React.Component {
 
 }
 
-export default CustomerService;
+export default GetAllCustomerService;
