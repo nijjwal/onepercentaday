@@ -5,3 +5,18 @@ header {
     font-size: 20px;
     padding: 10px;
 }
+
+.horizontalNavBar{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+
+ul.horizontalNavBar {
+    list-style-type: none;
+    justify-content: space-between;
+    background: #cacaca;
+    margin: 0;
+    padding: 10px;
+}
