@@ -20,3 +20,32 @@ ul.horizontalNavBar {
     margin: 0;
     padding: 10px;
 }
+
+/** CSS for Create a Customer Page - Starts**/
+.wrapper {
+    background-color: whitesmoke;
+    padding: 0;
+    border-radius: 1px;
+  }
+  .form-row {
+    display: flex;
+    justify-content: initial;
+    padding: 0.1em;
+  }
+  .form-row > label {
+    padding: .5em 1em .5em 0;
+    flex: 1;
+  }
+  .form-row > input {
+    flex: 5;
+  }
+  .form-row > input,
+  .form-row > button {
+    padding: .5em;
+  }
+  .form-row > button {
+   background: gray;
+   color: white;
+   border: 0;
+  }
+/** CSS for Create a Customer Page - Ends**/
