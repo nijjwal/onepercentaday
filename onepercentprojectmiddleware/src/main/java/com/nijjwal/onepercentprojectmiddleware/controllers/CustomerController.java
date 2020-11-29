@@ -46,6 +46,11 @@ public class CustomerController {
 
 	@RequestMapping(value = "/customers", method = RequestMethod.POST)
 	public void addCustomer(@RequestBody Customer customer) {
+
+		// Set new customer's id as last customer's id + 1
+		int newCustomerId = customers.get(customers.size() - 1).getId() + 1;
+		customer.setId(newCustomerId);
+
 		customers.add(customer);
 	}
 }
