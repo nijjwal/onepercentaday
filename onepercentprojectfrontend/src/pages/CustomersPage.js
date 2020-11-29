@@ -1,4 +1,3 @@
-import react from 'react';
 import GetAllCustomerService from '../services/GetAllCustomerService';
 
 function CustomersPage(){
