@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React, { useState } from 'react';
 
 function CreateCustomerService() {
+    const[messageBox, setMessageForCreateAction] = useState('');
 
     const [formData, setFullastName] = useState({
         firstName: '',
@@ -71,6 +72,7 @@ function CreateCustomerService() {
             .then(
                 (response) => {
                     console.log(response.data);
+                    setMessageForCreateAction(response.data);
                 }
             );
         
@@ -78,6 +80,8 @@ function CreateCustomerService() {
 
     return (
         <div>
+
+            <div>{messageBox}</div>
 
             <ul className="wrapper">
                 <li className="form-row">
