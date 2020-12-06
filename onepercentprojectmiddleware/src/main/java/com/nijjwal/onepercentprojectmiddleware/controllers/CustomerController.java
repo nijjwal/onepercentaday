@@ -2,6 +2,7 @@ package com.nijjwal.onepercentprojectmiddleware.controllers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,13 +32,13 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/customer", method = RequestMethod.GET)
-	public Customer getOneCustomerInfo(@RequestParam("uid") int userId, @RequestParam("lName") String lastName) {
-
-		List<Customer> customers = getAllCustomers();
+	public Customer getOneCustomerInfo(@RequestParam("userName") String userName,
+			@RequestParam("lName") String lastName) {
 
 		for (int i = 0; i < customers.size(); i++) {
 			Customer customer = customers.get(i);
-			if (userId == customer.getId() && lastName.equalsIgnoreCase(customer.getLastName())) {
+			if (userName.equalsIgnoreCase(customer.getUserName())
+					&& lastName.equalsIgnoreCase(customer.getLastName())) {
 				return customer;
 			}
 		}
@@ -70,6 +71,25 @@ public class CustomerController {
 		}
 
 		return userName + " username was not found! Please verify you have entered the correct username and try again!";
+
+	}
+
+	@RequestMapping(value = "/customers/{userName}", method = RequestMethod.DELETE)
+	public String deleteCustomer(@PathVariable String userName) {
+
+		Iterator<Customer> itr = customers.iterator();
+
+		while (itr.hasNext()) {
+			Customer customer = itr.next();
+
+			if (userName.equalsIgnoreCase(customer.getUserName())) {
+				itr.remove();
+
+				return userName + " has been deleted successfully!";
+			}
+		}
+
+		return userName + " username does not exist!";
 
 	}
 }
