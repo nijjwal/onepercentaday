@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,5 +55,21 @@ public class CustomerController {
 		customers.add(customer);
 
 		return "Successfully created user with username " + customer.getUserName();
+	}
+
+	@RequestMapping(value = "/customers/{userName}", method = RequestMethod.PUT)
+	public String updateCustomer(@PathVariable String userName, @RequestBody Customer customer) {
+
+		for (int i = 0; i < customers.size(); i++) {
+			if (userName.equalsIgnoreCase(customers.get(i).getUserName())) {
+				int userId = customers.get(i).getId();
+				customer.setId(userId);
+				customers.set(i, customer);
+				return userName + " information has been updated!";
+			}
+		}
+
+		return userName + " username was not found! Please verify you have entered the correct username and try again!";
+
 	}
 }
