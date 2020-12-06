@@ -1,8 +1,8 @@
 import Axios from 'axios';
 import React, { useState } from 'react';
 
-function CreateCustomerService() {
-    const[messageBox, setMessageForCreateAction] = useState('');
+function UpdateCustomerService() {
+    const [messageBox, setMessageForCreateAction] = useState('');
 
     const [formData, setUserInfo] = useState({
         firstName: '',
@@ -66,16 +66,16 @@ function CreateCustomerService() {
         //console.log(formData.firstName + formData.lastName + formData.userName + formData.email + formData.password);
         console.log(formData);
 
-        let url = 'http://localhost:8080/customers';
+        let url = 'http://localhost:8080/customers/' + formData.userName;
 
-        Axios.post(url, formData)
+        Axios.put(url, formData)
             .then(
                 (response) => {
                     console.log(response.data);
                     setMessageForCreateAction(response.data);
                 }
             );
-        
+
     }
 
     return (
@@ -85,28 +85,31 @@ function CreateCustomerService() {
 
             <ul className="wrapper">
                 <li className="form-row">
-                    <label htmlFor="firstName">First Name:</label>
-                    <input type="text" onChange={handleTxtChange} name="firstName" id="firstName" size="20" placeholder='Please enter your first name.' value={formData.firstName} />
-                </li>
-
-                <li className="form-row">
-                    <label htmlFor="lastName">Last Name:</label>
-                    <input type="text" onChange={handleTxtChange} name="lastName" id="lastName" size="20" placeholder='Please enter your last name.' value={formData.lastName} />
-                </li>
-
-                <li className="form-row">
                     <label htmlFor="userName">User Name:</label>
-                    <input type="text" onChange={handleTxtChange} name="userName" id="userName" size="20" placeholder='Please enter your user name.' value={formData.userName} />
+                    <input type="text" onChange={handleTxtChange} name="userName" id="userName" size="20" placeholder='Please enter your existing user name.' value={formData.userName} />
+                </li>
+
+
+                <li className="form-row">
+                    <label htmlFor="firstName">New First Name:</label>
+                    <input type="text" onChange={handleTxtChange} name="firstName" id="firstName" size="20" placeholder='Please enter your updated first name.' value={formData.firstName} />
                 </li>
 
                 <li className="form-row">
-                    <label htmlFor="email">Email:</label>
-                    <input type="text" onChange={handleTxtChange} name="email" id="email" size="20" placeholder='Please enter your email.' value={formData.email} />
+                    <label htmlFor="lastName">New Last Name:</label>
+                    <input type="text" onChange={handleTxtChange} name="lastName" id="lastName" size="20" placeholder='Please enter your updated last name.' value={formData.lastName} />
+                </li>
+
+
+
+                <li className="form-row">
+                    <label htmlFor="email">New Email:</label>
+                    <input type="text" onChange={handleTxtChange} name="email" id="email" size="20" placeholder='Please enter your updated email.' value={formData.email} />
                 </li>
 
                 <li className="form-row">
-                    <label htmlFor="password">Password:</label>
-                    <input type="text" onChange={handleTxtChange} name="password" id="password" size="20" placeholder='Please enter your password.' value={formData.password} />
+                    <label htmlFor="password">New Password:</label>
+                    <input type="text" onChange={handleTxtChange} name="password" id="password" size="20" placeholder='Please enter your updated password.' value={formData.password} />
                 </li>
 
 
@@ -119,4 +122,4 @@ function CreateCustomerService() {
 }
 
 
-export default CreateCustomerService;
+export default UpdateCustomerService;
