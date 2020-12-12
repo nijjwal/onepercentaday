@@ -4,13 +4,13 @@ import Axios from 'axios';
 
 function SearchACustomer() {
 
-    const [uid, setUserId] = useState('');
+    const [userName, setUserName] = useState('');
     const [lName, setLName] = useState('');
     const [result, setResult] = useState({});
 
     function handleTxtChange(event) {
-        if (event.target.name === 'uId') {
-            setUserId(event.target.value);
+        if (event.target.name === 'userName') {
+            setUserName(event.target.value);
         }
 
         if (event.target.name === 'lName') {
@@ -19,7 +19,7 @@ function SearchACustomer() {
     }
 
     function handleBtnClick() {
-        let newQryString = 'http://localhost:8080/customer?uid=' + uid + '&lName=' + lName;
+        let newQryString = 'http://localhost:8080/customer?userName=' + userName + '&lName=' + lName;
         console.log(newQryString);
 
 
@@ -45,7 +45,7 @@ function SearchACustomer() {
                 password={result.password}
             />
 
-            Enter User Id: <input type="text" name="uId" onChange={handleTxtChange} value={uid}></input>
+            Enter Username: <input type="text" name="userName" onChange={handleTxtChange} value={userName}></input>
             Enter Last Name: <input type="text" name="lName" onChange={handleTxtChange} value={lName}></input>
             <button onClick={handleBtnClick} type="submit">Display Data</button>
         </div>

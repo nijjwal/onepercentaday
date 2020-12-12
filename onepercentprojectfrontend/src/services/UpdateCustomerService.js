@@ -89,7 +89,6 @@ function UpdateCustomerService() {
                     <input type="text" onChange={handleTxtChange} name="userName" id="userName" size="20" placeholder='Please enter your existing user name.' value={formData.userName} />
                 </li>
 
-
                 <li className="form-row">
                     <label htmlFor="firstName">New First Name:</label>
                     <input type="text" onChange={handleTxtChange} name="firstName" id="firstName" size="20" placeholder='Please enter your updated first name.' value={formData.firstName} />
@@ -99,8 +98,6 @@ function UpdateCustomerService() {
                     <label htmlFor="lastName">New Last Name:</label>
                     <input type="text" onChange={handleTxtChange} name="lastName" id="lastName" size="20" placeholder='Please enter your updated last name.' value={formData.lastName} />
                 </li>
-
-
 
                 <li className="form-row">
                     <label htmlFor="email">New Email:</label>
@@ -115,7 +112,7 @@ function UpdateCustomerService() {
 
             </ul>
 
-            <button type="submit" onClick={handleBtnData}>Add Customer</button>
+            <button type="submit" onClick={handleBtnData}>Update Customer</button>
 
         </div>
     );
